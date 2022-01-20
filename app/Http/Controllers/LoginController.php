@@ -42,6 +42,9 @@ class LoginController extends Controller
                                 <div class="col-sm-10">
                                   <input type="password" class="form-control" id="inputPassword">
                                 </div>
+                              </div>
+                              <div class="mb-3 row">
+                                <button type="submit" class="btn btn-primary mb-3">Login</button>
                               </div>';
         return $this->response;
     }
