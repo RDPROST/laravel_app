@@ -31,9 +31,8 @@ class Category extends Model
         return $this->categories[$id];
     }
 
-    public function createCategory($name): array
+    public function createCategory($arr)
     {
-        $this->categories[] = ['name'=>$name];
-        return $this->categories;
+        $this->categories[] = $arr;
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\News;
 
 class NewsController extends Controller
@@ -10,7 +11,8 @@ class NewsController extends Controller
         return view('news.index', ['news' => $news->getAll()]);
     }
 
-    public function show(News $news,$id){
-        return view('news.show', ['news' => $news->getById($id)]);
+    public function show(News $news,Category $category,$id){
+        $post = $news->getById($id);
+        return view('news.show', ['news' => $post,'category' => $category->getCategoryById($post['category_id'])]);
     }
 }

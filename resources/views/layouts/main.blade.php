@@ -31,6 +31,7 @@
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle {{ (request()->is('admin*')) ? 'active' : '' }}" href="#" id="dropdown07XL" data-bs-toggle="dropdown" aria-expanded="false">Admin</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown07XL">
+                            <li><a class="dropdown-item {{ (request()->routeIs('admin::index')) ? 'active' : '' }}" href="{{route('admin::index')}}">Dashboard</a></li>
                             <li><a class="dropdown-item {{ (request()->routeIs('admin::news')) ? 'active' : '' }}" href="{{route('admin::news')}}">Create news</a></li>
                             <li><a class="dropdown-item {{ (request()->routeIs('admin::category')) ? 'active' : '' }}" href="{{route('admin::category')}}">Create category</a></li>
                         </ul>

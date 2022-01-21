@@ -10,15 +10,18 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return 'Hello world!';
+        return view('admin.index');
     }
 
     public function category(){
         return view('admin.category');
     }
 
-    public function categoryCreate(){
-
+    public function categoryCreate(Request $request, Category $category){
+        $req = $request->all();
+        unset($req['_token']);
+        $category->createCategory($req);
+        return redirect()->route('admin::category');
     }
 
     public function news(Category $category){
