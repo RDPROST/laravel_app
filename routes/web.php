@@ -3,8 +3,9 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController as HomeController;
 use App\Http\Controllers\NewsController as NewsController;
-use App\Http\Controllers\NewsCategoriesController as NewsCategoriesController;
 use App\Http\Controllers\LoginController as LoginController;
+use App\Http\Controllers\CategoryController as CategoryController;
+use App\Http\Controllers\AdminController as AdminController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,29 +33,51 @@ Route::group([
     Route::get('',[NewsController::class,'index'])
         ->name('index');
 
-    Route::get('post/{id}',[NewsController::class,'show'])
+    Route::get('{id}',[NewsController::class,'show'])
         ->name('show');
-
-    Route::get('add/',[NewsController::class,'create'])
-        ->name('create');
 });
 
 /**
- * Pages: Categories page
+ * Page: Category page
  */
 Route::group([
-    'prefix' => '/news/categories/',
-    'as' => 'news::categories::'
+    'prefix' => '/category/',
+    'as' => 'category::'
 ],function (){
-    Route::get('',[NewsCategoriesController::class,'index'])
+    Route::get('',[CategoryController::class,'index'])
+        ->name('index');
+    Route::get('{id}',[CategoryController::class,'show'])
+        ->name('show');
+});
+
+/**
+ * Page: Category page
+ */
+Route::group([
+    'prefix' => '/admin/',
+    'as' => 'admin::'
+],function (){
+    Route::get('',[AdminController::class,'index'])
         ->name('index');
 
-    Route::get('{name}',[NewsCategoriesController::class,'category'])
+    Route::get('category',[AdminController::class,'category'])
         ->name('category');
+
+    Route::post('category/create',[AdminController::class,'categoryCreate'])
+        ->name('category::create');
+
+    Route::get('news',[AdminController::class,'news'])
+        ->name('news');
+
+    Route::post('news/create',[AdminController::class,'newsCreate'])
+        ->name('news::create');
+
 });
 
 /**
  * Page: Login page
  */
-Route::get('/login',[LoginController::class,'index'])
-    ->name('login::index');
+//Route::get('/login',[LoginController::class,'index'])
+//    ->name('login::index');
+
+
