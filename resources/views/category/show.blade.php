@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('title')
-    Category Form
+    Category {{$category['name']}}
 @endsection
 
 @section('content')
